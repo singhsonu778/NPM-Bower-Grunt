@@ -1,0 +1,22 @@
+{
+  "name": "NPM-Bower-Grunt",
+  "description": "A sample tutorial to understand how to manage UI dependencies using NPM, Bower and Grunt.",
+  "main": "index.js",
+  "authors": [
+    "Sonu Kumar Singh"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/singhsonu778/NPM-Bower-Grunt",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.1",
+    "bootstrap": "~3.3.6"
+  }
+}
