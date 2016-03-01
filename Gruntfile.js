@@ -9,9 +9,6 @@ module.exports = function (grunt) {
         },
 
         sass: {
-        	options: {
-                sourcemap: 'none'
-            },
             sass: {
                 files: [{
                     expand: true,
@@ -99,7 +96,7 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-concat-css');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-concat');
