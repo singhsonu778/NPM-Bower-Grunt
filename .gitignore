@@ -3,3 +3,9 @@ node_modules/
 .sass-cache
 target
 build
+
+#eclipse files
+.project
+
+#intellij idea files
+.idea/

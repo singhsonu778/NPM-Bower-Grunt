@@ -1,24 +1,24 @@
 body {
-	min-width: 900px;
+  min-width: 900px;
 }
 
 .container-fluid {
-	background-color: lavender;
+  background-color: lavender;
 
-	header {
-		border-bottom: 1px solid black;
-		
-		h1 {
-			font-family: monospace;
-		}
-		
-		h2 {
-			font-family: cursive;
-		}
-	}
-	
-	footer {
-		border-top: 1px solid black;
-		text-align: end;
-	}
+  header {
+    border-bottom: 1px solid black;
+
+    h1 {
+      font-family: monospace;
+    }
+
+    h2 {
+      font-family: cursive;
+    }
+  }
+
+  footer {
+    border-top: 1px solid black;
+    text-align: end;
+  }
 }
