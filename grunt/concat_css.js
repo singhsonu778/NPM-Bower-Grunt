@@ -1,8 +1,10 @@
-module.exports = {
+module.exports = function (grunt) {
 	
-	concat_css: {
-        src: 'target/css/*.css',
-        dest: 'target/css/main/main.css'
-    }
+	return {
+		concat_css: {
+	        src: 'target/css/*.css',
+	        dest: 'target/css/main/main.css'
+	    }
+	};
 	
 };
