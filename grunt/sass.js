@@ -1,0 +1,13 @@
+module.exports = {
+	
+	sass: {
+        files: [{
+            expand: true,
+            cwd: 'src/scss',
+            src: '*.scss',
+            dest: 'target/css',
+            ext: '.css'
+        }]
+    }
+	
+};

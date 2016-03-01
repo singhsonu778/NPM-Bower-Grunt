@@ -1,0 +1,12 @@
+module.exports = {
+	
+	options: {
+        separator: ';'
+    },
+    
+    concat: {
+        src: 'src/js/*.js',
+        dest: 'target/js/main.js'
+    }
+	
+};
