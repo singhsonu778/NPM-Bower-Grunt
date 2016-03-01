@@ -5,11 +5,13 @@ module.exports = function (grunt) {
         pgk: grunt.file.readJSON('package.json'),
 
         clean: {
-            clean: ['build', 'target'],
-            clean_map: ['target/css/*.css.map']
+            clean: ['build', 'target']
         },
 
         sass: {
+        	options: {
+                sourcemap: 'none'
+            },
             sass: {
                 files: [{
                     expand: true,
@@ -59,7 +61,7 @@ module.exports = function (grunt) {
             },
             watch_scss: {
                 files: 'src/scss/*.scss',
-                tasks: ['sass', 'concat_css', 'cssmin', 'clean:clean_map', 'copy:copy_css']
+                tasks: ['sass', 'concat_css', 'cssmin', 'copy:copy_css']
             },
             watch_js: {
                 files: 'src/js/*.js',
@@ -105,7 +107,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('default', ['clean:clean', 'sass', 'concat_css', 'cssmin', 'clean:clean_map',
+    grunt.registerTask('default', ['clean:clean', 'sass', 'concat_css', 'cssmin',
         'concat', 'uglify', 'copy', 'watch']);
 
 };
