@@ -1,7 +1,7 @@
 module.exports = function (grunt) {
-	
-	return {
-		clean: ['build', 'target']
-	};
-	
+
+    return {
+        clean: ['build', 'target']
+    };
+
 };
