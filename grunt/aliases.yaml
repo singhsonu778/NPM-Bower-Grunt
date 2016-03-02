@@ -1,9 +1,24 @@
 default:
-  - 'clean'
+  - clean_tasks
+  - css_tasks
+  - js_tasks
+  - copy_tasks
+  - watch_tasks
+
+css_tasks:
   - 'sass'
   - 'concat_css'
   - 'cssmin'
+
+js_tasks:
   - 'concat'
   - 'uglify'
+
+clean_tasks:
+  - 'clean'
+
+copy_tasks:
   - 'copy'
+
+watch_tasks:
   - 'watch'
