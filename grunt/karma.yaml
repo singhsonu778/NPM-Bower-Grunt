@@ -1,0 +1,2 @@
+unit:
+    configFile: 'karma.conf.js'

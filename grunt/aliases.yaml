@@ -3,6 +3,7 @@ default:
   - css_tasks
   - js_tasks
   - copy_tasks
+  - karma_tasks
   - watch_tasks
 
 css_tasks:
@@ -19,6 +20,9 @@ clean_tasks:
 
 copy_tasks:
   - 'copy'
+
+karma_tasks:
+  - 'karma'
 
 watch_tasks:
   - 'watch'
