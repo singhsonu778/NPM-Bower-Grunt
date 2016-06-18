@@ -1,0 +1,46 @@
+Node and NPM
+	-NPM comes default with node
+	-NPM is responsible for node popularity
+	-NPM actually not a framework but platform
+	-Built on chrome v8 engine
+	-Act as server for program running written in js
+	-dependency is handled through package.json file
+	-npm init to create package.json
+	-npm is used to manage dependency
+	-npm install, npm install <package-name>, instally globally (using -g) and locally
+	-apps can be built using node or its framework such as xpress.js
+	-but we mostly use it for running bower and grunt
+	-npm list
+	-nested tree
+	-npm for build tool
+	-diff between ~ and ^
+	-diff between dep and devDep
+	
+Bower
+	-manage front end dependencies
+	-dependency is handled through bower.json file
+	-installed using node (installed globally)
+	-bower init to create bower.json
+	-bower list
+	-flat tree
+
+Grunt
+	-task runner
+	-grunt-cli globally, grunt per project
+	-npm is used for grunt modules
+	-multiple tasks --> each task has multiple targets
+	-src: ['src/aa.js', 'src/aaa.js']
+	-dest: 'dest/b.js'
+	-files: {
+        'dest/a.js': ['src/aa.js', 'src/aaa.js'],
+        'dest/a1.js': ['src/aa1.js', 'src/aaa1.js'],
+      }
+    -files: [
+        {src: ['src/aa.js', 'src/aaa.js'], dest: 'dest/a.js'},
+        {src: ['src/aa1.js', 'src/aaa1.js'], dest: 'dest/a1.js'},
+      ]
+      
+1. diff between dependencies in npm and bower
+2. diff between dependencies and dev-dependencies
+
+no path for bower n grunt
