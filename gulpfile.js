@@ -47,3 +47,22 @@ gulp.task('uglify', function() {
            .pipe(gulp.dest('target/js/'));
 });
 
+gulp.task('copyHtml', function() {
+	return gulp.src('src/index.html')
+           .pipe(gulp.dest('build'));
+});
+
+gulp.task('copyCss', function() {
+	return gulp.src('target/css/main/main.min.css')
+           .pipe(gulp.dest('build'));
+});
+
+gulp.task('copyJs', function() {
+	return gulp.src('target/js/main.min.js')
+           .pipe(gulp.dest('build'));
+});
+
+gulp.task('copyThirdParty', function() {
+	return gulp.src(['bower_components/bootstrap/dist/css/bootstrap.min.css', 'bower_components/jquery/dist/jquery.min.js'])
+           .pipe(gulp.dest('build/third_party'));
+});
