@@ -30,6 +30,8 @@
     "grunt-sass": "^1.1.0",
     "gulp": "^3.9.1",
     "gulp-concat-css": "^2.3.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.21",
