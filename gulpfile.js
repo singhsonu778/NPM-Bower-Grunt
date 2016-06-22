@@ -5,6 +5,7 @@ var concatCss = require('gulp-concat-css');
 var cssmin = require('gulp-cssmin');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 
 gulp.task('default', function() {
 	console.log('Sonu Singh');
@@ -36,6 +37,13 @@ gulp.task('cssmin', function () {
 gulp.task('concat', function() {
 	return gulp.src('src/js/*.js')
            .pipe(concat('main.js'))
+           .pipe(gulp.dest('target/js/'));
+});
+
+gulp.task('uglify', function() {
+	return gulp.src('target/js/main.js')
+           .pipe(uglify())
+           .pipe(rename({suffix: '.min'}))
            .pipe(gulp.dest('target/js/'));
 });
 
