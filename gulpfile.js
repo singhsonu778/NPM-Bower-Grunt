@@ -7,9 +7,22 @@ var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var server = require('karma').Server;
+var runSequence = require('run-sequence');
 
-gulp.task('default', function() {
-	console.log('Sonu Singh');
+gulp.task('default', function(callback) {
+  runSequence('clean', 'css_tasks', 'js_tasks', 'copy_tasks', 'karma', callback);
+});
+
+gulp.task('css_tasks', function(callback) {
+  runSequence('sass', 'concatCss', 'cssmin', callback);
+});
+
+gulp.task('js_tasks', function(callback) {
+  runSequence('concat', 'uglify', callback);
+});
+
+gulp.task('copy_tasks', function(callback) {
+  runSequence('copyHtml', 'copyCss', 'copyJs', 'copyThirdParty', callback);
 });
 
 gulp.task('clean', function() {
