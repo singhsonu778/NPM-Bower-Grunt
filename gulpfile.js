@@ -11,7 +11,7 @@ var runSequence = require('run-sequence');
 var watch = require('gulp-watch');
 
 gulp.task('default', function(callback) {
-	runSequence('clean', ['css', 'js', 'copy'], 'karma', 'watch', callback);
+	runSequence('clean', ['css', 'js', 'copy', 'karma'], 'watch', callback);
 });
 
 gulp.task('clean', function() {
@@ -35,6 +35,10 @@ gulp.task('js', function() {
            .pipe(gulp.dest('target'));
 });
 
+gulp.task('karma', function(done) {
+	new server({configFile: __dirname + '/karma.conf.js'}, done).start();
+});
+
 gulp.task('copy', function(callback) {
 	runSequence(['copyHtml', 'copyThirdParty'], callback);
 });
@@ -49,16 +53,9 @@ gulp.task('copyThirdParty', function() {
            .pipe(gulp.dest('target/third_party'));
 });
 
-gulp.task('karma', function(done) {
-	new server({configFile: __dirname + '/karma.conf.js'}, done).start();
-});
-
 gulp.task('watch', function(callback) {
 	gulp.watch('src/index.html', ['copyHtml']);
 	gulp.watch('src/scss/*.scss', ['css']);
-	gulp.watch('src/js/*.js', ['watchJs']);
+	gulp.watch('src/js/*.js', ['js', 'karma']);
 });
 
-gulp.task('watchJs', function(callback) {
-	runSequence('js', 'karma', callback);
-});
