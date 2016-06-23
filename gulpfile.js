@@ -11,11 +11,7 @@ var runSequence = require('run-sequence');
 var watch = require('gulp-watch');
 
 gulp.task('default', function(callback) {
-  runSequence('clean', ['css_tasks', 'js_tasks'], 'copy_tasks', 'karma', 'watch', callback);
-});
-
-gulp.task('copy_tasks', function(callback) {
-  runSequence(['copyHtml', 'copyCss', 'copyJs', 'copyThirdParty'], callback);
+	runSequence('clean', ['css_tasks', 'js_tasks'], 'copy_tasks', 'karma', 'watch', callback);
 });
 
 gulp.task('clean', function() {
@@ -37,6 +33,10 @@ gulp.task('js_tasks', function() {
            .pipe(uglify())
            .pipe(rename({suffix: '.min'}))
            .pipe(gulp.dest('target/js/'));
+});
+
+gulp.task('copy_tasks', function(callback) {
+	runSequence(['copyHtml', 'copyCss', 'copyJs', 'copyThirdParty'], callback);
 });
 
 gulp.task('copyHtml', function() {
