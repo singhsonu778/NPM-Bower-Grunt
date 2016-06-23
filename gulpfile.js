@@ -24,7 +24,7 @@ gulp.task('css_tasks', function(){
 	       .pipe(concatCss('main.css'))
 	       .pipe(cssmin())
 	       .pipe(rename({suffix: '.min'}))
-           .pipe(gulp.dest('target/css'));
+           .pipe(gulp.dest('build'));
 });
 
 gulp.task('js_tasks', function() {
@@ -32,25 +32,15 @@ gulp.task('js_tasks', function() {
            .pipe(concat('main.js'))
            .pipe(uglify())
            .pipe(rename({suffix: '.min'}))
-           .pipe(gulp.dest('target/js/'));
+           .pipe(gulp.dest('build'));
 });
 
 gulp.task('copy_tasks', function(callback) {
-	runSequence(['copyHtml', 'copyCss', 'copyJs', 'copyThirdParty'], callback);
+	runSequence(['copyHtml', 'copyThirdParty'], callback);
 });
 
 gulp.task('copyHtml', function() {
 	return gulp.src('src/index.html')
-           .pipe(gulp.dest('build'));
-});
-
-gulp.task('copyCss', function() {
-	return gulp.src('target/css/main.min.css')
-           .pipe(gulp.dest('build'));
-});
-
-gulp.task('copyJs', function() {
-	return gulp.src('target/js/main.min.js')
            .pipe(gulp.dest('build'));
 });
 
@@ -65,14 +55,10 @@ gulp.task('karma', function (done) {
 
 gulp.task('watch', function (callback) {
 	gulp.watch('src/index.html', ['copyHtml']);
-	gulp.watch('src/scss/*.scss', ['watchCss']);
+	gulp.watch('src/scss/*.scss', ['css_tasks']);
 	gulp.watch('src/js/*.js', ['watchJs']);
 });
 
-gulp.task('watchCss', function (callback) {
-	runSequence('css_tasks', 'copyCss', callback);
-});
-
 gulp.task('watchJs', function (callback) {
-	runSequence('js_tasks', 'copyJs', 'karma', callback);
+	runSequence('js_tasks', 'karma', callback);
 });
