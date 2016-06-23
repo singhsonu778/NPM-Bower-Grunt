@@ -8,9 +8,10 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var server = require('karma').Server;
 var runSequence = require('run-sequence');
+var watch = require('gulp-watch');
 
 gulp.task('default', function(callback) {
-  runSequence('clean', ['css_tasks', 'js_tasks'], 'copy_tasks', 'karma', callback);
+  runSequence('clean', ['css_tasks', 'js_tasks'], 'copy_tasks', 'karma', 'watch', callback);
 });
 
 gulp.task('css_tasks', function(callback) {
@@ -83,4 +84,18 @@ gulp.task('copyThirdParty', function() {
 
 gulp.task('karma', function (done) {
 	new server({configFile: __dirname + '/karma.conf.js'}, done).start();
+});
+
+gulp.task('watch', function (callback) {
+	gulp.watch('src/index.html', ['copyHtml']);
+	gulp.watch('src/scss/*.scss', ['watchCss']);
+	gulp.watch('src/js/*.js', ['watchJs']);
+});
+
+gulp.task('watchCss', function (callback) {
+	runSequence('css_tasks', 'copyCss', callback);
+});
+
+gulp.task('watchJs', function (callback) {
+	runSequence('js_tasks', 'copyJs', 'karma', callback);
 });
