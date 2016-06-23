@@ -53,6 +53,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
+	//however it works only if singleRun is set to false
     autoWatch: false,
 
 

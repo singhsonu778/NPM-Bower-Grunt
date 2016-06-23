@@ -6,6 +6,7 @@ var cssmin = require('gulp-cssmin');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var server = require('karma').Server;
 
 gulp.task('default', function() {
 	console.log('Sonu Singh');
@@ -65,4 +66,8 @@ gulp.task('copyJs', function() {
 gulp.task('copyThirdParty', function() {
 	return gulp.src(['bower_components/bootstrap/dist/css/bootstrap.min.css', 'bower_components/jquery/dist/jquery.min.js'])
            .pipe(gulp.dest('build/third_party'));
+});
+
+gulp.task('karma', function (done) {
+	new server({configFile: __dirname + '/karma.conf.js'}, done).start();
 });
