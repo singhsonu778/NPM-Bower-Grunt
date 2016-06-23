@@ -14,10 +14,6 @@ gulp.task('default', function(callback) {
   runSequence('clean', ['css_tasks', 'js_tasks'], 'copy_tasks', 'karma', 'watch', callback);
 });
 
-gulp.task('css_tasks', function(callback) {
-  runSequence('sass', 'concatCss', 'cssmin', callback);
-});
-
 gulp.task('js_tasks', function(callback) {
   runSequence('concat', 'uglify', callback);
 });
@@ -30,23 +26,13 @@ gulp.task('clean', function() {
 	return del.sync(['build', 'target']);
 });
 
-gulp.task('sass', function(){
+gulp.task('css_tasks', function(){
 	return gulp.src('src/scss/**/*.scss')
 	       .pipe(sass())
+	       .pipe(concatCss('main.css'))
+	       .pipe(cssmin())
+	       .pipe(rename({suffix: '.min'}))
            .pipe(gulp.dest('target/css'));
-});
-
-gulp.task('concatCss', function() {
-	return gulp.src('target/css/**/*.css')
-		   .pipe(concatCss('main/main.css'))
-           .pipe(gulp.dest('target/css/'));
-});
-
-gulp.task('cssmin', function () {
-	return gulp.src('target/css/main/main.css')
-		   .pipe(cssmin())
-		   .pipe(rename({suffix: '.min'}))
-		   .pipe(gulp.dest('target/css/main/'));
 });
 
 gulp.task('concat', function() {
@@ -68,7 +54,7 @@ gulp.task('copyHtml', function() {
 });
 
 gulp.task('copyCss', function() {
-	return gulp.src('target/css/main/main.min.css')
+	return gulp.src('target/css/main.min.css')
            .pipe(gulp.dest('build'));
 });
 
