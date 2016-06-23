@@ -14,10 +14,6 @@ gulp.task('default', function(callback) {
   runSequence('clean', ['css_tasks', 'js_tasks'], 'copy_tasks', 'karma', 'watch', callback);
 });
 
-gulp.task('js_tasks', function(callback) {
-  runSequence('concat', 'uglify', callback);
-});
-
 gulp.task('copy_tasks', function(callback) {
   runSequence(['copyHtml', 'copyCss', 'copyJs', 'copyThirdParty'], callback);
 });
@@ -35,14 +31,9 @@ gulp.task('css_tasks', function(){
            .pipe(gulp.dest('target/css'));
 });
 
-gulp.task('concat', function() {
+gulp.task('js_tasks', function() {
 	return gulp.src('src/js/*.js')
            .pipe(concat('main.js'))
-           .pipe(gulp.dest('target/js/'));
-});
-
-gulp.task('uglify', function() {
-	return gulp.src('target/js/main.js')
            .pipe(uglify())
            .pipe(rename({suffix: '.min'}))
            .pipe(gulp.dest('target/js/'));
