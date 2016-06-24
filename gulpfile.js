@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')({pattern : '*'});
 
 gulp.task('default', function(callback) {
-	plugins.runSequence('clean', ['css', 'js', 'copy', 'karma'], 'watch', callback);
+	plugins.runSequence('clean', ['css', 'js', 'copy', 'karma'], 'browser-sync', 'watch', callback);
 });
 
 gulp.task('clean', function() {
@@ -48,4 +48,18 @@ gulp.task('watch', function(callback) {
 	gulp.watch('src/index.html', ['copyHtml']);
 	gulp.watch('src/scss/*.scss', ['css']);
 	gulp.watch('src/js/*.js', ['js', 'karma']);
+});
+
+gulp.task('browser-sync', function() {
+   var files = [
+      'src/**/*.html',
+      'src/scss/**/*.scss',
+      'src/js/**/*.js'
+   ];
+
+   plugins.browserSync.init(files, {
+      server: {
+         baseDir: 'target'
+      }
+   });
 });
