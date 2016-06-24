@@ -40,7 +40,12 @@ Grunt
         {src: ['src/aa1.js', 'src/aaa1.js'], dest: 'dest/a1.js'},
       ]
       
+Gulp
+	-alternative to Grunt
+	-here we need gulp-cli globally, gulp per project
+      
 1. diff between dependencies in npm and bower
 2. diff between dependencies and dev-dependencies
+3. diff between grunt and gulp
 
-no path for bower n grunt
+no path for bower n grunt n gulp
